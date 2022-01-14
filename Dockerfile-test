@@ -1,0 +1,10 @@
+FROM golang:1.17.6-alpine
+ENV CGO_ENABLED 0
+
+WORKDIR /go/src/app
+
+COPY . .
+
+RUN go mod download
+
+CMD ["/bin/sh", "-c", "go test -v ./... -cover"]
